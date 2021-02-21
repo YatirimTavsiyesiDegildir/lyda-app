@@ -1,0 +1,202 @@
+postgresql://postgress:yatirimtavsiyesi@ypk-instance-1.cl9lxrkwh0fc.us-east-1.rds.amazonaws.com:5432/postgres
+
+
+
+
+
+Admin Secret:
+
+E7v2cA2oCXG7xYcNaSeEFzOQo4p42UAGTdInXtmz4h7ZfS52XWmqKMzZq50AIEHD
+
+
+
+
+
+
+
+ Test Data Customer                   
+{
+   "response": 
+  {
+     "return": 
+    {
+       "customerList": 
+      {
+         "creditCards": 
+        {
+           "creditCardNumber": "7521595712139632" 
+        },
+         "accounts": [ 
+          {
+             "accountNumber": "10704748",
+             "currencyCode": "TL" 
+          },
+           
+          {
+             "accountNumber": "10704749",
+             "currencyCode": "TL" 
+          },
+           
+          {
+             "accountNumber": "10704750",
+             "currencyCode": "EUR" 
+          },
+           
+          {
+             "accountNumber": "10704751",
+             "currencyCode": "USD" 
+          } 
+        ],
+         "customerNumber": "10704096" 
+      } 
+    } 
+  } 
+}
+
+
+bir kredi kartı 
+7521595712139632
+
+
+
+Open Customer
+
+{
+	"customerInfo": {
+		"identityDetails": {
+			"fatherName": "MUSTAFA",
+			"placeOfBirth": "İSTANBUL",
+			"motherMaidenName": "ÇELİK",
+			"gender": "E",
+			"nationality": "TR",
+			"identityNumber": "11111111111",
+			"surname": "DEMİR",
+			"name": "HALUK",
+			"motherName": "AYŞE",
+			"dateOfBirth": "1980-01-01"
+		},
+		"customer": {
+			"branch": "924"
+		}
+	},
+	"listOfAddress": [{
+			"addressType": "E",
+			"countryCode": "TR",
+			"countyCode": "1449",
+			"otherPart": "Deneme Mah. Deneme Sok. No:34",
+			"provinceCode": "34",
+			"zipCode": "34880",
+			"main": "true"
+		},
+		{
+			"addressType": "Y",
+			"countryCode": "TR",
+			"countyCode": "1497",
+			"otherPart": "Deneme Mah. Deneme Sok. No:9",
+			"provinceCode": "9",
+			"main": "false"
+		}
+	],	
+	"listOfPhone": [{
+			"areaCode": "500",
+			"phoneType": "C",
+			"countryCode": "90",
+			"subscriberNumber": "1234567"
+		},
+		{
+			"areaCode": "216",
+			"phoneType": "E",
+			"countryCode": "90",
+			"subscriberNumber": "1234567"
+		}
+	],
+	"listOfEmail": [{
+			"address": "deneme@deneme.com"
+		},
+		{
+			"address": "deneme2@deneme.com"
+		}
+	]
+}	
+
+Client Number: 10704097
+
+
+
+
+                    
+{
+     "accountCurrency": "TL",
+     "accountName": "Vadesiz TL Hesabı",
+     "branch": "924",
+     "customerNumber": 10704097
+}
+                    
+					
+TL account Number "accountNo": "10704752"
+                  
+
+
+
+
+
+
+
+
+  Account List Example                  
+{
+	"customerNumber": 10704096,
+	"includedCurrencyCode": ["TL", "USD", "EUR"],
+	"excludedBranchs": "926"
+}
+                    
+                  
+
+
+
+Account Transaction List
+
+
+
+                    
+{
+  "accountNo": "10704751",
+  "ccy": "USD",
+  "continuousSearch": "true",
+  "descSort": "true",
+  "startDate": "2021-2-01",
+  "endDate": "2021-3-01",
+  "noOfPage": "1",
+  "noOfRecs": "5",
+  "postNo": "0"
+}
+                    
+					
+					
+					
+					
+EFT Data
+
+                        
+{
+	"customerPaymentMessageList": {
+		"clientNo": "10704097",
+		"amount": "1",
+		"description": "Hesaba EFT",
+		"receiverAccountNo": "TR340004600354001000002868",
+		"receiverName": "Haluk Demir",
+		"senderAccountNo": "10704748"
+	}
+}
+                    
+				  
+                  
+
+
+
+
+
+
+
+
+
