@@ -7,7 +7,7 @@ import {
   Icon,
 } from '@ui-kitten/components';
 import ProfileScreen from '../Main/Profile';
-import CouponsScreen from '../Main/Coupons/Coupons';
+import CouponsScreen from '../Main/Coupons/MainScreen';
 import ShowQRScreen from '../Main/Coupons/ShowQR';
 import AddBankAPI from '../Main/Coupons/AddBankAPI';
 import FriendsScreen from '../Main/Friends/Friends';
