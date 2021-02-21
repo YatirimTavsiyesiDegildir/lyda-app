@@ -77,27 +77,27 @@ export default class CouponsScreen extends Component {
           <ScrollView style={CouponsStyles.listContainer}>
             <SubscriptionWarningCard />
             <Text category="h4" style={CouponsStyles.sectionTitle}>
-              Aylik Varlik Degisimi
+              Aylik Birikim Degisimi
             </Text>
             <LineChart
               data={{
                 labels: ['Eylul', 'Ekim', 'Kasim', 'Aralik', 'Ocak'],
                 datasets: [
                   {
-                    data: [1, 5, 5, 6.75, 45],
+                    data: [100, 500, 500, 4750, 4500],
                   },
                 ],
               }}
               width={Dimensions.get('window').width - 40} // from react-native
               height={220}
-              yAxisLabel="TL"
-              yAxisSuffix="b"
+              yAxisLabel=""
+              yAxisSuffix=""
               yAxisInterval={1} // optional, defaults to 1
               chartConfig={{
-                backgroundColor: '#e26a00',
-                backgroundGradientFrom: '#fb8c00',
-                backgroundGradientTo: '#ffa726',
-                decimalPlaces: 2, // optional, defaults to 2dp
+                backgroundColor: '#FFD6D9',
+                backgroundGradientFrom: '#FF708D',
+                backgroundGradientTo: '#DB2C66',
+                decimalPlaces: 0, // optional, defaults to 2dp
                 color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                 labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                 style: {
@@ -127,29 +127,29 @@ export default class CouponsScreen extends Component {
                 {
                   name: 'Market',
                   amount: 600,
-                  color: 'rgba(131, 167, 234, 1)',
-                  legendFontColor: '#7F7F7F',
+                  color: '#ffe0b2',
+                  legendFontColor: '#ffe0b2',
                   legendFontSize: 15,
                 },
                 {
-                  name: 'Restoran / Bar',
+                  name: 'Eglence',
                   amount: 1000,
-                  color: '#F00',
-                  legendFontColor: '#7F7F7F',
+                  color: '#ffb74d',
+                  legendFontColor: '#ffb74d',
                   legendFontSize: 15,
                 },
                 {
                   name: 'Ulasim',
                   amount: 300,
-                  color: 'red',
-                  legendFontColor: '#7F7F7F',
+                  color: '#ff9800',
+                  legendFontColor: '#ff9800',
                   legendFontSize: 15,
                 },
                 {
-                  name: 'Faturalar',
+                  name: 'Fatura',
                   amount: 550,
-                  color: '#ffffff',
-                  legendFontColor: '#7F7F7F',
+                  color: '#f57c00',
+                  legendFontColor: '#f57c00',
                   legendFontSize: 15,
                 },
               ]}
@@ -176,23 +176,22 @@ export default class CouponsScreen extends Component {
             </Text>
             <ProgressChart
               data={{
-                labels: ['Araba', 'Bilgisayar', 'Tatil'], // optional
+                labels: ['Araba', 'PC', 'Tatil'], // optional
                 data: [40000 / 300000, 0.6, 0.8],
               }}
               width={Dimensions.get('window').width - 40}
               height={220}
               strokeWidth={16}
-              radius={32}
+              radius={20}
+              style={{borderRadius: 16}}
               chartConfig={{
-                backgroundColor: '#106A30',
-                backgroundGradientFrom: '#A4F1A2',
-                backgroundGradientTo: '#43B055',
+                backgroundColor: '#B3FFD6',
+                backgroundGradientFrom: '#51F0B0',
+                backgroundGradientTo: '#00B383',
                 decimalPlaces: 2, // optional, defaults to 2dp
                 color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                 labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                style: {
-                  borderRadius: 16,
-                },
+                paddingLeft: -20,
               }}
               hideLegend={false}
               paddingRight={30}
@@ -237,9 +236,9 @@ export default class CouponsScreen extends Component {
               width={Dimensions.get('window').width - 40}
               height={220}
               chartConfig={{
-                backgroundColor: '#e26a00',
-                backgroundGradientFrom: '#fb8c00',
-                backgroundGradientTo: '#ffa726',
+                backgroundColor: '#ab47bc',
+                backgroundGradientFrom: '#8e24aa',
+                backgroundGradientTo: '#6a1b9a',
                 decimalPlaces: 2, // optional, defaults to 2dp
                 color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
                 labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
