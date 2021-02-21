@@ -12,6 +12,8 @@ import {
   TopNavigation,
   Text,
   List,
+  Icon,
+  TopNavigationAction,
 } from '@ui-kitten/components';
 
 import {PurchaseCard} from '../../../Components/Card';
@@ -55,19 +57,25 @@ export default class PastPurchasesScreen extends Component {
     this.getTransactions();
   }
 
-  renderTransaction = ({item, index}) => {
-    /*
-    return (
+  GoBackIcon = props => <Icon {...props} name="arrow-back-outline" />;
 
-    );
-     */
-    return <View style={{width: 10, height: 10, backgroundColor: '#000'}} />;
-  };
+  renderLeftActions = () => (
+    <React.Fragment>
+      <TopNavigationAction
+        icon={this.GoBackIcon}
+        onPress={() => this.props.navigation.goBack()}
+      />
+    </React.Fragment>
+  );
 
   render() {
     return (
       <SafeAreaView style={{flex: 1}}>
-        <TopNavigation title="Harcamalarim" alignment="center" />
+        <TopNavigation
+          title="Harcamalarim"
+          alignment="center"
+          accessoryLeft={this.renderLeftActions}
+        />
         <Divider />
         <Layout
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
