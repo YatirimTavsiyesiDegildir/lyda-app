@@ -3,9 +3,8 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
-  TouchableOpacity,
-  Alert,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import {
   Divider,
@@ -13,61 +12,17 @@ import {
   Text,
   TopNavigation,
   TopNavigationAction,
-  Avatar,
-  Button,
-  Spinner,
   Icon,
+  Modal,
+  Button,
+  Card,
 } from '@ui-kitten/components';
-import ImagePicker from 'react-native-image-crop-picker';
-import {FetchGet, FetchPutPhoto} from '../../src/utils/Fetch';
-
 const LogoutIcon = props => <Icon {...props} name="log-out" />;
 
 export default class ProfileScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      photoSource: {
-        uri:
-          'https://bulusunca-profile-pictures.s3.us-east-2.amazonaws.com/' +
-          global.userId.toString() +
-          '.jpg',
-      },
-      photoLoading: false,
-    };
-  }
-
-  openImagePicker() {
-    // Todo: for localization and android check back the repo
-    ImagePicker.openPicker({
-      width: 400,
-      height: 400,
-      cropping: true,
-    }).then(image => {
-      this.setState({photoLoading: true, photoSource: null});
-      FetchGet(
-        '/get_profile_picture_upload_url',
-        {access_token: global.accessToken},
-        responseData => {
-          if (responseData.status === 'OK') {
-            FetchPutPhoto(
-              responseData.fields,
-              {image: image},
-              () => {
-                this.setState({
-                  photoSource: {uri: image.path},
-                  photoLoading: false,
-                });
-              },
-              xhr => {
-                Alert.alert('Bir hata olustu: ' + xhr.status.toString());
-              },
-            );
-          }
-        },
-        () => {},
-      );
-    });
+    this.state = {visible: false, badgeText: ''};
   }
 
   BackAction = () => (
@@ -76,6 +31,33 @@ export default class ProfileScreen extends Component {
       onPress={() => this.props.route.params.mainFunctions.logout()}
     />
   );
+
+  ModalWithBackdropShowcase = (badgeString, imgUri) => {
+    return (
+      <View style={styles.container}>
+        <TouchableOpacity
+          onPress={() =>
+            this.setState({visible: true, badgeText: badgeString})
+          }>
+          <Image
+            style={{height: 100, width: 100, margin: 15}}
+            source={{
+              uri: imgUri,
+            }}
+          />
+        </TouchableOpacity>
+
+        <Modal
+          visible={this.state.visible}
+          backdropStyle={styles.backdrop}
+          onBackdropPress={() => this.setState({visible: false})}>
+          <Card disabled={true} style={{margin: 10}}>
+            <Text>{this.state.badgeText}</Text>
+          </Card>
+        </Modal>
+      </View>
+    );
+  };
 
   render() {
     return (
@@ -88,29 +70,15 @@ export default class ProfileScreen extends Component {
         <Divider />
         <Layout style={ProfileStyles.container}>
           <View style={ProfileStyles.avatarContainer}>
-            <TouchableOpacity
-              onPress={() => this.openImagePicker()}
-              style={ProfileStyles.avatarInnerContainer}>
+            <View style={ProfileStyles.avatarInnerContainer}>
               <Image
                 style={ProfileStyles.avatar}
-                size="giant"
-                source={this.state.photoSource}
-                onLoadEnd={() => {
-                  this.setState({photoLoading: false});
-                }}
-                onLoadStart={() => {
-                  this.setState({photoLoading: true});
+                source={{
+                  uri:
+                    'https://project-lyda.s3.eu-central-1.amazonaws.com/wsb.jpg',
                 }}
               />
-              {this.state.photoLoading ? (
-                <View
-                  style={{
-                    position: 'absolute',
-                  }}>
-                  <Spinner />
-                </View>
-              ) : null}
-            </TouchableOpacity>
+            </View>
           </View>
           <View style={ProfileStyles.infoContainer}>
             <Text category={'h1'}>{global.realName}</Text>
@@ -119,7 +87,28 @@ export default class ProfileScreen extends Component {
             </Text>
           </View>
           <View style={ProfileStyles.logoutContainer}>
-
+            <Text category={'h3'}>Basarilarim</Text>
+            <View
+              style={{
+                height: '100%',
+                width: '100%',
+                flexDirection: 'row',
+                justifyContent: 'center',
+                marginTop: 20,
+              }}>
+              {this.ModalWithBackdropShowcase(
+                'Tebrikler! Tum aboneliklerin icin hatirlatici kurdun.',
+                'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/clap.jpeg',
+              )}
+              {this.ModalWithBackdropShowcase(
+                'Tebrikler! Bir hafta boyunca arkadaslarindan daha tasarruflu davrandin.',
+                'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/flag.jpg',
+              )}
+              {this.ModalWithBackdropShowcase(
+                'Tebrikler! Lyda hesabini bir banka hesabina bagladin.',
+                'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/natural.jpeg',
+              )}
+            </View>
           </View>
         </Layout>
       </SafeAreaView>
@@ -127,24 +116,33 @@ export default class ProfileScreen extends Component {
   }
 }
 
+const styles = StyleSheet.create({
+  container: {
+    minHeight: 192,
+  },
+  backdrop: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+});
+
 const ProfileStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 30,
   },
   avatarContainer: {
-    flex: 1,
+    flex: 2,
+    padding: 20,
   },
   infoContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'flex-start',
     width: '100%',
+    padding: 20,
   },
   logoutContainer: {
-    flex: 1,
+    flex: 3,
     alignItems: 'center',
     justifyContent: 'flex-start',
     width: '100%',
@@ -152,12 +150,15 @@ const ProfileStyles = StyleSheet.create({
   avatar: {
     height: '100%',
     width: '100%',
-    borderRadius: 100,
+    resizeMode: 'contain',
+    padding: 10,
+    zIndex: 10,
+    borderRadius: 1000,
   },
   avatarInnerContainer: {
-    height: 200,
-    width: 200,
-    borderRadius: 100,
+    height: '100%',
+    aspectRatio: 1,
+    borderRadius: 1000,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'white',
