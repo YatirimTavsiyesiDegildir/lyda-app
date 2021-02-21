@@ -82,7 +82,13 @@ export default class PastPurchasesScreen extends Component {
                   amount={Math.abs(
                     item.item.txnInfo.transactionDetails.txnAmount,
                   )}
-                  subscription={0}
+                  subscription={
+                    ['Amazon Prime', 'Netflix', 'Spotify'].indexOf(
+                      item.item.txnInfo.transactionDetails.txnDscr.txnDscr1,
+                    ) !== -1
+                      ? 1
+                      : 0
+                  }
                 />
               )}
               refreshControl={
