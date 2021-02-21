@@ -28,7 +28,10 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from 'react-native-chart-kit';
-import {SubscriptionWarningCard} from '../../../Components/Card';
+import {
+  SubscriptionWarningCard,
+  FriendWarningCard,
+} from '../../../Components/Card';
 
 export default class CouponsScreen extends Component {
   constructor(props) {
@@ -118,6 +121,7 @@ export default class CouponsScreen extends Component {
             <Text category="h4" style={CouponsStyles.sectionTitle}>
               Bu Ayin Harcamalari
             </Text>
+            <FriendWarningCard />
 
             <PieChart
               data={[

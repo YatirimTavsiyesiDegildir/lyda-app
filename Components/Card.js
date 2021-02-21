@@ -76,6 +76,33 @@ export const SubscriptionWarningCard = () => {
   );
 };
 
+export const FriendWarningCard = props => {
+  return (
+    <Card
+      style={[CardStyles.smallCard, {backgroundColor: '#FFAA00', height: 120}]}>
+      <View style={[CardStyles.smallCardInnerContainer]}>
+        <View
+          style={{
+            height: '100%',
+            width: 60,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Icon
+            style={CardStyles.icon}
+            fill="#FFF"
+            name="alert-triangle-outline"
+          />
+        </View>
+        <Text style={{flex: 1, color: '#FFF'}}>
+          Ev disindaki harcamalarin arkdaslarindan %35 daha fazla. Bu
+          harcamalardan kisarak birikimlerine odaklanabilirsin.
+        </Text>
+      </View>
+    </Card>
+  );
+};
+
 const CardStyles = StyleSheet.create({
   card: {
     flex: 1,
