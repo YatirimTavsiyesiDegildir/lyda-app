@@ -40,12 +40,12 @@ AppRegistry.registerComponent(appName, () => App);
 var xhr = new XMLHttpRequest();
 var url = 'https://api.yapikredi.com.tr/api/creditcard/v1/creditCardTransactions';
 xhr.open('POST', url);
-xhr.setRequestHeader('Authorization', 'Bearer 7047fa49-dfce-4ee6-bdfa-293680097466');
+xhr.setRequestHeader('Authorization', 'Bearer 20098be1-4937-4d53-9ccf-e9fe58cb33bf');
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.onreadystatechange = function () {
     if (this.readyState == 4) {
         //console.warn('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
-        console.warn(this.responseText[0]);
+        console.warn(this.responseText);
     }
 };
 xhr.send('                    {  "request": {    "cardNo": "6353183025166336",    "cycle": "0"  }}                                      ');
