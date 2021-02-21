@@ -19,11 +19,46 @@ export default class AddBankAPI extends Component {
     this.state = {
       banks: [
         {
-          name: 'Yapi Kredi',
+          name: 'Yapı Kredi',
           image:
             'https://project-lyda.s3.eu-central-1.amazonaws.com/yapi_kredi_bankasi.png',
           id: 'yapi_kredi',
           status: 0,
+        },
+        {
+          name: 'Ziraat Bankası',
+          image:
+            'https://project-lyda.s3.eu-central-1.amazonaws.com/ziraatbank.png',
+          id: 'ziraat_bankasi',
+          status: 2,
+        },
+        {
+          name: 'İş Bankası',
+          image:
+            'https://project-lyda.s3.eu-central-1.amazonaws.com/isbank.jpg',
+          id: 'is_bankasi',
+          status: 2,
+        },
+        {
+          name: 'Garanti BBVA',
+          image:
+            'https://project-lyda.s3.eu-central-1.amazonaws.com/garanti.jpg',
+          id: 'garanti_bbva',
+          status: 2,
+        },
+        {
+          name: 'QNB Finansbank',
+          image:
+            'https://project-lyda.s3.eu-central-1.amazonaws.com/qnbfinans.png',
+          id: 'qnb_finans',
+          status: 2,
+        },
+        {
+          name: 'Enpara',
+          image:
+            'https://project-lyda.s3.eu-central-1.amazonaws.com/Enpara.com_logo.png',
+          id: 'enpara',
+          status: 2,
         },
       ],
       refreshing: true,
