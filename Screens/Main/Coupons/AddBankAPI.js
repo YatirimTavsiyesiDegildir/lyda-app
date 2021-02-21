@@ -23,7 +23,7 @@ export default class AddBankAPI extends Component {
           image:
             'https://project-lyda.s3.eu-central-1.amazonaws.com/yapi_kredi_bankasi.png',
           id: 'yapi_kredi',
-          status: global.cardNumber === null ? 0 : 1,
+          status: global.cardNumber != null ? 1 : 0,
         },
         {
           name: 'Ziraat Bankası',

@@ -122,7 +122,9 @@ export default class FriendsScreen extends Component {
               }
             />
           ) : (
-            <Text category={'h5'}>Henuz hic arkadasin yok.</Text>
+            <Text category={'h5'} style={{textAlign: 'center'}}>
+              Henuz hic arkadasin yok.
+            </Text>
           )}
         </Layout>
         <Modal

@@ -38,7 +38,7 @@ export default class PastPurchasesScreen extends Component {
       xhr.open('POST', url);
       xhr.setRequestHeader(
         'Authorization',
-        'Bearer 5bdb7b35-5a01-468d-9d3b-026cf361892e',
+        'Bearer a4b26dd5-ee9d-481d-b5e2-e64bc5a37f39',
       );
       xhr.setRequestHeader('Content-Type', 'application/json');
       xhr.onreadystatechange = function() {

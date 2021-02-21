@@ -30,9 +30,9 @@ export const BankApiCard = props => (
 );
 
 export const AddBankApiButton = props => {
-  let status = props.cardProps.status;
   const [visible, setVisible] = React.useState(false);
   const [cardNo, setCardNo] = React.useState(null);
+  const [status, setStatus] = React.useState(props.cardProps.status);
   return (
     <>
       <Button
@@ -69,6 +69,7 @@ export const AddBankApiButton = props => {
                 disabled={status === 3}
                 onPress={() => {
                   global.cardNumber = cardNo;
+                  setStatus(1);
                   setVisible(false);
                 }}>
                 EKLE
@@ -202,7 +203,10 @@ export const PurchaseCard = props => {
             style={CardStyles.subscriptionButton}
             appearance="filled"
             status="success"
-            onPress={() => setVisible(false)}>
+            onPress={() => {
+              global.subscriptionWarningEnabled = true;
+              setVisible(false);
+            }}>
             Evet
           </Button>
         </View>
