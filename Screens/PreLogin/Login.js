@@ -66,7 +66,7 @@ export default class LoginScreen extends Component {
               autoCapitalize="none"
             />
             <Input
-              placeholder="Password"
+              placeholder="Sifre"
               value={this.state.password}
               onChangeText={nextValue => this.setState({password: nextValue})}
               secureTextEntry={true}
