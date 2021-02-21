@@ -171,34 +171,6 @@ export default class CouponsScreen extends Component {
             />
 
             <View style={{height: 40}} />
-            <Text category="h4" style={CouponsStyles.sectionTitle}>
-              Birikim Hedefleri
-            </Text>
-            <ProgressChart
-              data={{
-                labels: ['Araba', 'PC', 'Tatil'], // optional
-                data: [40000 / 300000, 0.6, 0.8],
-              }}
-              width={Dimensions.get('window').width - 40}
-              height={220}
-              strokeWidth={16}
-              radius={20}
-              style={{borderRadius: 16}}
-              chartConfig={{
-                backgroundColor: '#B3FFD6',
-                backgroundGradientFrom: '#51F0B0',
-                backgroundGradientTo: '#00B383',
-                decimalPlaces: 2, // optional, defaults to 2dp
-                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-                paddingLeft: -20,
-              }}
-              hideLegend={false}
-              paddingRight={30}
-              borderRadius={16}
-            />
-
-            <View style={{height: 40}} />
             <View style={{flexDirection: 'row', width: '100%'}}>
               <Text
                 category="h4"
@@ -251,6 +223,34 @@ export default class CouponsScreen extends Component {
                   stroke: '#ffa726',
                 },
               }}
+            />
+
+            <View style={{height: 40}} />
+            <Text category="h4" style={CouponsStyles.sectionTitle}>
+              Birikim Hedefleri
+            </Text>
+            <ProgressChart
+              data={{
+                labels: ['Araba', 'PC', 'Tatil'], // optional
+                data: [40000 / 300000, 0.6, 0.8],
+              }}
+              width={Dimensions.get('window').width - 40}
+              height={220}
+              strokeWidth={16}
+              radius={20}
+              style={{borderRadius: 16}}
+              chartConfig={{
+                backgroundColor: '#B3FFD6',
+                backgroundGradientFrom: '#51F0B0',
+                backgroundGradientTo: '#00B383',
+                decimalPlaces: 2, // optional, defaults to 2dp
+                color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
+                paddingLeft: -20,
+              }}
+              hideLegend={false}
+              paddingRight={30}
+              borderRadius={16}
             />
             <View style={{height: 75}} />
           </ScrollView>

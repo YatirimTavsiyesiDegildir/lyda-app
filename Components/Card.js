@@ -14,7 +14,7 @@ import {
 const CouponCardFooter = props => {
   return (
     <View style={[CardStyles.footerContainer]}>
-      <Text category={'h3'}>{props.cardProps.name}</Text>
+      <Text category={'h5'}>{props.cardProps.name}</Text>
       <Text category={'h5'} style={CardStyles.amountText} appearance="hint" />
       {AddBankApiButton(props)}
     </View>
