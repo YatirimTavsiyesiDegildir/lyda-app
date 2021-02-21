@@ -19,6 +19,8 @@ global.tckn = '';
 global.realName = '';
 global.password = '';
 global.username = '';
+global.friendsAdded = false;
+global.subscriptionWarningEnabled = false;
 /**GLOBALS END*/
 
 export default class App extends Component {

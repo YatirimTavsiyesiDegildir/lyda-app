@@ -75,7 +75,11 @@ export default class CouponsScreen extends Component {
         <Layout
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <ScrollView style={CouponsStyles.listContainer}>
-            <SubscriptionWarningCard />
+            {global.subscriptionWarningEnabled ? (
+              <SubscriptionWarningCard />
+            ) : (
+              <View style={{height: 20}} />
+            )}
             <Text category="h4" style={CouponsStyles.sectionTitle}>
               Aylik Birikim Degisimi
             </Text>
@@ -120,7 +124,7 @@ export default class CouponsScreen extends Component {
             <Text category="h4" style={CouponsStyles.sectionTitle}>
               Bu Ayin Harcamalari
             </Text>
-            <FriendWarningCard />
+            {global.friendsAdded ? <FriendWarningCard /> : null}
 
             <PieChart
               data={[
