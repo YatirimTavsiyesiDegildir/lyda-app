@@ -45,7 +45,8 @@ xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.onreadystatechange = function () {
     if (this.readyState == 4) {
         //console.warn('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
-        console.warn(this.responseText);
+        //console.warn(this.responseText);
+        console.log(this.response);
     }
 };
-xhr.send('                    {  "request": {    "cardNo": "6353183025166336",    "cycle": "0"  }}                                      ');
+xhr.send(' {  "request": {    "cardNo": "6353183025166336",    "cycle": "0"  }}   ');
