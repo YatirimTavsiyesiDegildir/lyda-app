@@ -2,11 +2,10 @@ import React, {Component} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  Alert,
-  RefreshControl,
   Dimensions,
   ScrollView,
   View,
+  TouchableOpacity,
 } from 'react-native';
 import {
   Divider,
@@ -201,9 +200,24 @@ export default class CouponsScreen extends Component {
             />
 
             <View style={{height: 40}} />
-            <Text category="h4" style={CouponsStyles.sectionTitle}>
-              Harcama Aliskanliklari
-            </Text>
+            <View style={{flexDirection: 'row', width: '100%'}}>
+              <Text
+                category="h4"
+                style={[CouponsStyles.sectionTitle, {flex: 1}]}>
+                Harcama Aliskanliklari
+              </Text>
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.navigate('PastPurchasesScreen')
+                }>
+                <Icon
+                  style={{height: 30, width: 30}}
+                  fill="#000"
+                  name="arrow-forward-outline"
+                />
+              </TouchableOpacity>
+            </View>
+
             <ContributionGraph
               values={[
                 {date: '2017-01-02', count: 1},
@@ -255,7 +269,6 @@ const CouponsStyles = StyleSheet.create({
     paddingRight: 20,
   },
   sectionTitle: {
-    width: '100%',
     textAlign: 'center',
   },
 });

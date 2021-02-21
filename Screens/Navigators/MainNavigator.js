@@ -12,7 +12,7 @@ import ShowQRScreen from '../Main/Coupons/ShowQR';
 import AddBankAPI from '../Main/Coupons/AddBankAPI';
 import FriendsScreen from '../Main/Friends/Friends';
 import AddFriendsScreen from '../Main/Friends/AddFriends';
-
+import PastPurchasesScreen from '../Main/Coupons/PastPurchases';
 
 import {createStackNavigator} from '@react-navigation/stack';
 
@@ -29,6 +29,7 @@ const CouponsStack = props => (
     <Stack.Screen name="CouponsScreen" component={CouponsScreen} />
     <Stack.Screen name="ShowQRScreen" component={ShowQRScreen} />
     <Stack.Screen name="AddBankAPI" component={AddBankAPI} />
+    <Stack.Screen name="PastPurchasesScreen" component={PastPurchasesScreen} />
   </Stack.Navigator>
 );
 
