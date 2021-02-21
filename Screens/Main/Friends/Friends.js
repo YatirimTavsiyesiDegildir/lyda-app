@@ -67,7 +67,7 @@ export default class FriendsScreen extends Component {
           });
         })
         .catch(result => {
-          Alert.alert('Bir hata olustu.');
+          Alert.alert('Bir hata oluştu.');
         });
     }
   }
@@ -123,7 +123,7 @@ export default class FriendsScreen extends Component {
             />
           ) : (
             <Text category={'h5'} style={{textAlign: 'center'}}>
-              Henuz hic arkadasin yok.
+              Henüz hiç arkadaşın yok.
             </Text>
           )}
         </Layout>
@@ -134,7 +134,7 @@ export default class FriendsScreen extends Component {
           style={{width: '90%'}}>
           <Card disabled={true} style={{margin: 10}}>
             <Text category={'h6'}>
-              Rehberinde bulunan arkadaslarini eklemek ister misin?
+              Rehberinde bulunan arkadaşlarını eklemek ister misin?
             </Text>
             <View style={{height: 30}} />
             <Button
@@ -146,7 +146,7 @@ export default class FriendsScreen extends Component {
                 this.setState({visible: false});
                 this.getFriends();
               }}>
-              Rehbere Izin Ver
+              Rehbere İzin Ver
             </Button>
           </Card>
         </Modal>

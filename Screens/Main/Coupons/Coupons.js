@@ -70,7 +70,7 @@ export default class CouponsScreen extends Component {
     return (
       <SafeAreaView style={{flex: 1}}>
         <TopNavigation
-          title="Finans Durumum"
+          title="Finansal Durumum"
           alignment="center"
           accessoryRight={this.renderRightActions}
         />
@@ -92,11 +92,11 @@ export default class CouponsScreen extends Component {
                 <View style={{height: 20}} />
               )}
               <Text category="h4" style={CouponsStyles.sectionTitle}>
-                Aylik Birikim Degisimi
+                Aylık Birikim Degişimi
               </Text>
               <LineChart
                 data={{
-                  labels: ['Eylul', 'Ekim', 'Kasim', 'Aralik', 'Ocak'],
+                  labels: ['Eylül', 'Ekim', 'Kasım', 'Aralık', 'Ocak'],
                   datasets: [
                     {
                       data: [100, 500, 500, 4750, 4500],
@@ -134,7 +134,7 @@ export default class CouponsScreen extends Component {
 
               <View style={{height: 40}} />
               <Text category="h4" style={CouponsStyles.sectionTitle}>
-                Bu Ayin Harcamalari
+                Bu Ayın Harcamaları
               </Text>
               {global.friendsAdded ? <FriendWarningCard /> : null}
 
@@ -191,7 +191,7 @@ export default class CouponsScreen extends Component {
                 <Text
                   category="h4"
                   style={[CouponsStyles.sectionTitle, {flex: 1}]}>
-                  Harcama Aliskanliklari
+                  Harcama Alışkanlıkları
                 </Text>
                 <TouchableOpacity
                   onPress={() => {
@@ -275,7 +275,7 @@ export default class CouponsScreen extends Component {
             </ScrollView>
           ) : (
             <Text category={'h5'} style={{textAlign: 'center'}}>
-              Lutfen bir bankanin API'ile baglanti kurun.
+              Lütfen bir bankanın API'ile bağlantı kurun.
             </Text>
           )}
         </Layout>
