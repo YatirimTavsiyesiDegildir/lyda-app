@@ -3,44 +3,110 @@ import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
+  RefreshControl,
+  View,
 } from 'react-native';
 import {
   Divider,
   Layout,
   TopNavigation,
   Text,
+  List,
+  Icon,
+  TopNavigationAction,
 } from '@ui-kitten/components';
+
 import {PurchaseCard} from '../../../Components/Card';
 
 export default class PastPurchasesScreen extends Component {
   constructor(props) {
     super(props);
+    this.state = {transactions: [], refreshing: false};
   }
 
-  componentDidMount() {}
+  updateTransactions(transactions) {
+    console.log(transactions[0].txnInfo.transactionDetails.txnDscr);
+    this.setState({transactions: transactions});
+  }
+
+  getTransactions() {
+    let updateTransactions = t => this.updateTransactions(t);
+    var xhr = new XMLHttpRequest();
+    var url =
+      'https://api.yapikredi.com.tr/api/creditcard/v1/creditCardTransactions';
+    xhr.open('POST', url);
+    xhr.setRequestHeader(
+      'Authorization',
+      'Bearer 5bdb7b35-5a01-468d-9d3b-026cf361892e',
+    );
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+      if (this.readyState == 4) {
+        updateTransactions(
+          JSON.parse(this.responseText).response.return.listResult.cycleList
+            .transactionList,
+        );
+      }
+    };
+    xhr.send(
+      ' {  "request": {    "cardNo": "6353183025166336",    "cycle": "0"  }}   ',
+    );
+  }
+
+  componentDidMount() {
+    this.getTransactions();
+  }
+
+  GoBackIcon = props => <Icon {...props} name="arrow-back-outline" />;
+
+  renderLeftActions = () => (
+    <React.Fragment>
+      <TopNavigationAction
+        icon={this.GoBackIcon}
+        onPress={() => this.props.navigation.goBack()}
+      />
+    </React.Fragment>
+  );
 
   render() {
     return (
       <SafeAreaView style={{flex: 1}}>
-        <TopNavigation title="Harcamalarim" alignment="center" />
+        <TopNavigation
+          title="Harcamalarim"
+          alignment="center"
+          accessoryLeft={this.renderLeftActions}
+        />
         <Divider />
         <Layout
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <ScrollView style={PastPurchasesStyles.listContainer}>
-            <Text category={'h4'} style={{marginTop: 10, marginLeft: 20}}>
-              Son 1 Ay
-            </Text>
-            <PurchaseCard name={'New Castle'} amount={59} subscription={0} />
-            <PurchaseCard name={'New Castle'} amount={59} subscription={0} />
-            <PurchaseCard name={'Netflix'} amount={14.99} subscription={1} />
-            <PurchaseCard name={'New Castle'} amount={59} subscription={0} />
-            <PurchaseCard name={'New Castle'} amount={59} subscription={0} />
-            <PurchaseCard name={'New Castle'} amount={59} subscription={0} />
-            <PurchaseCard name={'New Castle'} amount={59} subscription={0} />
-            <PurchaseCard name={'New Castle'} amount={59} subscription={0} />
-            <PurchaseCard name={'New Castle'} amount={59} subscription={0} />
-            <PurchaseCard name={'New Castle'} amount={59} subscription={0} />
-          </ScrollView>
+          {this.state.transactions.length > 1 ? (
+            <List
+              style={PastPurchasesStyles.listContainer}
+              data={this.state.transactions}
+              extraData={this.state.transactions}
+              renderItem={item => (
+                <PurchaseCard
+                  name={item.item.txnInfo.transactionDetails.txnDscr.txnDscr1}
+                  amount={Math.abs(
+                    item.item.txnInfo.transactionDetails.txnAmount,
+                  )}
+                  subscription={
+                    ['Amazon Prime', 'Netflix', 'Spotify'].indexOf(
+                      item.item.txnInfo.transactionDetails.txnDscr.txnDscr1,
+                    ) !== -1
+                      ? 1
+                      : 0
+                  }
+                />
+              )}
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={() => this.getTransactions()}
+                />
+              }
+            />
+          ) : null}
         </Layout>
       </SafeAreaView>
     );

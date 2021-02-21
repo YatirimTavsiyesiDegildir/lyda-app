@@ -1,20 +1,15 @@
-postgresql://postgress:yatirimtavsiyesi@ypk-instance-1.cl9lxrkwh0fc.us-east-1.rds.amazonaws.com:5432/postgres
 
+Create Test Data API’ı ile simülasyon ortamında kullanabileceğiniz test datası yaratabilirsiniz. 
+Bu API uygulamanız için bir adet müşteri, bu müşteriye ait iki adet vadesiz Türk Lirası (TL) hesabı,
+ birer adet Amerikan Doları (USD) ve Avrupa Para Birimi (EUR) hesabı ve bir adet kredi kartı oluşturmaktadır.
+ Müşterinin kimlik, adres, e-mail ve telefon bilgileri rastgele yaratılmaktadır. 
+ Vadesiz TL hesaplarında 10000 TL, USD hesabında 1000 USD ve EUR hesabında 1000 EUR bakiye olacak şekilde
+ oluşturulur. Kredi kartı ise Worldcard tipinde, 3000 TL kart limiti olacak şekilde yaratılır. 
+ (Bu datalar uygulamanızda 5'ten az müşteri varsa yaratılmaktadır.)
+ 
+ 
+Test Data Response:
 
-
-
-
-Admin Secret:
-
-E7v2cA2oCXG7xYcNaSeEFzOQo4p42UAGTdInXtmz4h7ZfS52XWmqKMzZq50AIEHD
-
-
-
-
-
-
-
- Test Data Customer                   
 {
    "response": 
   {
@@ -24,56 +19,55 @@ E7v2cA2oCXG7xYcNaSeEFzOQo4p42UAGTdInXtmz4h7ZfS52XWmqKMzZq50AIEHD
       {
          "creditCards": 
         {
-           "creditCardNumber": "7521595712139632" 
+           "creditCardNumber": "4201018990887468" 
         },
          "accounts": [ 
           {
-             "accountNumber": "10704748",
+             "accountNumber": "10704753",
              "currencyCode": "TL" 
           },
            
           {
-             "accountNumber": "10704749",
+             "accountNumber": "10704754",
              "currencyCode": "TL" 
           },
            
           {
-             "accountNumber": "10704750",
+             "accountNumber": "10704755",
              "currencyCode": "EUR" 
           },
            
           {
-             "accountNumber": "10704751",
+             "accountNumber": "10704756",
              "currencyCode": "USD" 
           } 
         ],
-         "customerNumber": "10704096" 
+         "customerNumber": "10704098" 
       } 
     } 
   } 
 }
 
 
-bir kredi kartı 
-7521595712139632
+
+OPEN CUSTOMER REQUEST
 
 
 
-Open Customer
-
+                    
 {
 	"customerInfo": {
 		"identityDetails": {
-			"fatherName": "MUSTAFA",
+			"fatherName": "BABA",
 			"placeOfBirth": "İSTANBUL",
-			"motherMaidenName": "ÇELİK",
+			"motherMaidenName": "ANAS",
 			"gender": "E",
 			"nationality": "TR",
-			"identityNumber": "11111111111",
-			"surname": "DEMİR",
-			"name": "HALUK",
-			"motherName": "AYŞE",
-			"dateOfBirth": "1980-01-01"
+			"identityNumber": "11113251111",
+			"surname": "CINAR",
+			"name": "KIZILTEPE",
+			"motherName": "ANA",
+			"dateOfBirth": "1989-05-03"
 		},
 		"customer": {
 			"branch": "924"
@@ -83,7 +77,7 @@ Open Customer
 			"addressType": "E",
 			"countryCode": "TR",
 			"countyCode": "1449",
-			"otherPart": "Deneme Mah. Deneme Sok. No:34",
+			"otherPart": "Deneme Mah. Deneme Sok. No:24",
 			"provinceCode": "34",
 			"zipCode": "34880",
 			"main": "true"
@@ -92,7 +86,7 @@ Open Customer
 			"addressType": "Y",
 			"countryCode": "TR",
 			"countyCode": "1497",
-			"otherPart": "Deneme Mah. Deneme Sok. No:9",
+			"otherPart": "Deneme Mah. Deneme Sok. No:91",
 			"provinceCode": "9",
 			"main": "false"
 		}
@@ -101,26 +95,92 @@ Open Customer
 			"areaCode": "500",
 			"phoneType": "C",
 			"countryCode": "90",
-			"subscriberNumber": "1234567"
+			"subscriberNumber": "2234567"
 		},
 		{
 			"areaCode": "216",
 			"phoneType": "E",
 			"countryCode": "90",
-			"subscriberNumber": "1234567"
+			"subscriberNumber": "2234567"
 		}
 	],
 	"listOfEmail": [{
-			"address": "deneme@deneme.com"
+			"address": "kiziltepecinar@gmail.com"
 		},
 		{
-			"address": "deneme2@deneme.com"
+			"address": "deneme2@denseme.com"
 		}
 	]
-}	
+}
 
-Client Number: 10704097
+Customer No: 10704100
 
+ACCOUNT NO 10704758
+	
+                    
+                  
+
+JOHN SMITH ACCOUNT DATAS
+
+{
+	"customerInfo": {
+		"identityDetails": {
+			"fatherName": "JOHN",
+			"placeOfBirth": "İSTANBUL",
+			"motherMaidenName": "JOHN",
+			"gender": "E",
+			"nationality": "TR",
+			"identityNumber": "11111111110",
+			"surname": "JOHN",
+			"name": "SMITH",
+			"motherName": "SMITH",
+			"dateOfBirth": "1989-04-02"
+		},
+		"customer": {
+			"branch": "924"
+		}
+	},
+	"listOfAddress": [{
+			"addressType": "E",
+			"countryCode": "TR",
+			"countyCode": "1449",
+			"otherPart": "Deneme Mah. Deneme Sok. No:224",
+			"provinceCode": "34",
+			"zipCode": "32880",
+			"main": "true"
+		},
+		{
+			"addressType": "Y",
+			"countryCode": "TR",
+			"countyCode": "1497",
+			"otherPart": "Deneme Mah. Deneme Sok. No:921",
+			"provinceCode": "9",
+			"main": "false"
+		}
+	],	
+	"listOfPhone": [{
+			"areaCode": "500",
+			"phoneType": "C",
+			"countryCode": "90",
+			"subscriberNumber": "1111111"
+		},
+		{
+			"areaCode": "216",
+			"phoneType": "E",
+			"countryCode": "90",
+			"subscriberNumber": "1111111"
+		}
+	],
+	"listOfEmail": [{
+			"address": "johnsmith@mail.com"
+		},
+		{
+			"address": "denemess2@denseme.com"
+		}
+	]
+}
+
+CUSTOMER No: 10704104
 
 
 
@@ -129,74 +189,86 @@ Client Number: 10704097
      "accountCurrency": "TL",
      "accountName": "Vadesiz TL Hesabı",
      "branch": "924",
-     "customerNumber": 10704097
+     "customerNumber": 10704104
 }
-                    
-					
-TL account Number "accountNo": "10704752"
+
+TL ACCOUNT No: "accountNo": "10704767" 
                   
 
 
-
-
-
-
-
-
-  Account List Example                  
+         Hesap sorgulama query si          
 {
-	"customerNumber": 10704096,
-	"includedCurrencyCode": ["TL", "USD", "EUR"],
-	"excludedBranchs": "926"
+	"customerNumber": 10704101,
 }
                     
                   
 
 
 
-Account Transaction List
+Kredi kartindan hesaba havale
+
+                    
+            
+{
+  "clientNo": "10704098",
+  "amount": "300",
+  "customExplanation": "Hesaba havale",
+  "toAccountValue": "10704757",
+  "cardNo": "4201018990887468"
+}
+                    
+                  
+
+
+Hesap geçmiş sorgulama
 
 
 
                     
 {
-  "accountNo": "10704751",
-  "ccy": "USD",
-  "continuousSearch": "true",
+  "accountNo": "10704757",
+  "ccy": "TL",
+  "continuousSearch": "false",
   "descSort": "true",
-  "startDate": "2021-2-01",
+  "startDate": "2020-10-01",
   "endDate": "2021-3-01",
   "noOfPage": "1",
   "noOfRecs": "5",
   "postNo": "0"
 }
                     
-					
-					
-					
-					
-EFT Data
-
-                        
-{
-	"customerPaymentMessageList": {
-		"clientNo": "10704097",
-		"amount": "1",
-		"description": "Hesaba EFT",
-		"receiverAccountNo": "TR340004600354001000002868",
-		"receiverName": "Haluk Demir",
-		"senderAccountNo": "10704748"
-	}
-}
-                    
-				  
                   
 
 
 
 
+Kredi kratı yollama para
 
 
+                    
+            
+{
+  "clientNo": "10704103",
+  "amount": "8",
+  "customExplanation": "Amazon Prime",
+  "toAccountValue": "10704767",
+  "cardNo": "6353183025166336"
+}
+                    
+                  
+				 
+
+                    
+{
+  "request": {
+    "cardNo": "6353183025166336",
+    "cycle": "0"
+  }
+}
+                    
+                  
 
 
+				  
+				  
 
