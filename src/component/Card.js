@@ -13,7 +13,10 @@ const FriendCard = props => (
         <Image
           style={CardStyles.friendAvatar}
           source={{
-            uri: 'https://project-lyda.s3.eu-central-1.amazonaws.com/wsb.jpg',
+            uri:
+              'https://project-lyda.s3.eu-central-1.amazonaws.com/pp/' +
+              props.cardProps.followed_to_user.id +
+              '.png',
           }}
         />
       </View>
