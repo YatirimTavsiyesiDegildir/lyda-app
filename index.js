@@ -10,21 +10,4 @@ import {setContext} from '@apollo/client/link/context';
 import {gql} from '@apollo/client';
 import {client} from './back-end/OurApi';
 
-// const client = ...
-
-client
-  .query({
-    query: gql`
-      query MyQuery {
-        users {
-          email
-          id
-          tckn
-          username
-        }
-      }
-    `,
-  })
-  .then(result => console.warn(result));
-
 AppRegistry.registerComponent(appName, () => App);

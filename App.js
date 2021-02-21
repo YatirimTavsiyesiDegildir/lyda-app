@@ -9,13 +9,15 @@ import {FetchPost} from './Utils/Fetch';
 import {StoreData, GetData} from './Utils/AsyncStorage';
 import {call} from 'react-native-reanimated';
 import theme from './src/themes/theme';
+import {client} from './back-end/OurApi';
+import {gql} from '@apollo/client';
 
 /**GLOBALS START*/
-global.ApiUrl = 'https://y8vcfynym7.execute-api.us-east-2.amazonaws.com/api';
 global.email = '';
-global.userId = '';
+global.userId = 0;
+global.tckn = '';
 global.realName = '';
-global.accessToken = '';
+global.password = '';
 global.username = '';
 /**GLOBALS END*/
 
@@ -32,28 +34,32 @@ export default class App extends Component {
   clearLoginInfo() {
     StoreData('email', '');
     StoreData('user_id', '');
+    StoreData('tckn', '');
     StoreData('real_name', '');
-    StoreData('access_token', '');
+    StoreData('password', '');
     StoreData('username', '');
     global.email = '';
     global.userId = '';
+    global.tckn = '';
     global.realName = '';
-    global.accessToken = '';
+    global.password = '';
     global.username = '';
     this.setState({isLoggedIn: false});
   }
 
-  saveLoginInfo(response) {
-    StoreData('email', response.user.email);
-    StoreData('user_id', response.user.id);
-    StoreData('real_name', response.user.real_name);
-    StoreData('access_token', response.user.access_token);
-    StoreData('username', response.user.username);
-    global.email = response.user.email;
-    global.userId = response.user.id;
-    global.realName = response.user.real_name;
-    global.accessToken = response.user.access_token;
-    global.username = response.user.username;
+  saveLoginInfo(user) {
+    StoreData('email', user.email);
+    StoreData('user_id', user.id);
+    StoreData('tckn', user.tckn);
+    StoreData('real_name', user.name);
+    StoreData('password', user.password);
+    StoreData('username', user.username);
+    global.email = user.email;
+    global.userId = user.id;
+    global.tckn = user.tckn;
+    global.realName = user.name;
+    global.password = user.password;
+    global.username = user.username;
     this.setState({isLoggedIn: true});
   }
 
@@ -80,30 +86,46 @@ export default class App extends Component {
   }
 
   logInUserWithPassword(email, password, callback) {
-    /*
-    FetchPost(
-      '/login_with_password',
-      {email: email, password: password},
-      response => {
-        if (response.status === 'OK') {
-          this.saveLoginInfo(response);
+    client
+      .query({
+        query: gql`
+          query MyQuery($email: String, $password: String) {
+            users(
+              where: {
+                email: {_eq: $email}
+                _and: {_or: {password: {_eq: $password}}}
+              }
+            ) {
+              email
+              id
+              tckn
+              username
+              name
+              password
+              phonenumber
+            }
+          }
+        `,
+        variables: {
+          email: email,
+          password: password,
+        },
+      })
+      .then(result => {
+        console.warn(result);
+        if (result.data.users.length === 1) {
+          let user = result.data.users[0];
+          this.saveLoginInfo(user);
+          callback();
         } else {
           Alert.alert('Email veya sifre yanlis.');
           callback();
         }
-      },
-      () => {
+      })
+      .catch(result => {
         Alert.alert('Bir hata olustu.');
         callback();
-      },
-    );*/
-    // bypass login
-    global.email = 'dogudeniz.ugur@gmail.com';
-    global.userId = 0;
-    global.realName = 'Dogu Deniz Ugur';
-    global.accessToken = 'a';
-    global.username = 'dogu';
-    this.setState({isLoggedIn: true});
+      });
   }
 
   logout = () => {
