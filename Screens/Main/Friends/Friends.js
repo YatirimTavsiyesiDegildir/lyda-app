@@ -1,5 +1,11 @@
 import React, {Component} from 'react';
-import {SafeAreaView, Alert, RefreshControl, StyleSheet} from 'react-native';
+import {
+  SafeAreaView,
+  Alert,
+  RefreshControl,
+  StyleSheet,
+  View,
+} from 'react-native';
 import {
   Divider,
   Layout,
@@ -9,7 +15,7 @@ import {
   Icon,
 } from '@ui-kitten/components';
 import {FetchGet, FetchPost} from '../../../src/utils/Fetch';
-import {FriendCard} from '../../../src/components/Card';
+//import {FriendCard} from '../../../src/components/Card';
 
 const AddFriendIcon = props => <Icon {...props} name="person-add-outline" />;
 
@@ -84,7 +90,9 @@ export default class FriendsScreen extends Component {
   }
 
   renderFriendCard = ({item, index}) => {
-    return (
+    return <View />;
+  };
+  /*
       <FriendCard
         cardProps={item}
         functions={{
@@ -93,8 +101,7 @@ export default class FriendsScreen extends Component {
         }}
         refreshing={this.state.refreshing}
       />
-    );
-  };
+    );*/
 
   respondToFriendRequest(target, response) {
     FetchPost(
