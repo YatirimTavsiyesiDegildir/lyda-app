@@ -1,13 +1,15 @@
 lyda-app
 
-"Lyda", Özellikle 18-30 yaş arası gençleri hedef alan, finansal okuryazarlığı geliştirmeyi amaçlayan bir kişisel finans uygulaması ve kontrol panelidir. OpenBanking destekleyen bankaların API'leri aracılığı ile harcamalar, bakiyeler ve bu tarz bilgilere ulaşıp, kolay anlaşılabilen ve güzel grafiklere dönüştürür. Ayrıca harcamaları takip ederek ücretli aylık üyelik olabilecekleri takip eder, kullanıcıyı uyarır. Üyelik yenileneceği zaman kullanıcıya notifikasyon yollayarak haber verir, hatırlatır.
-
-
-Ayrıca uygulamamız sayesinde arkadaşlarınızı takip edebilir, ortalama harcama trendlerini görebilir ve daha mantıklı harcamalar konusunda öneriler alabilirsiniz.
-
-Oyunlaştırılmış bir deneyim sunarak kullanıcıyı motive eder, badge kazanabilir.
-
 
 LYDA App
 
-Günümüzde özellikle gençlerden oluşan bir çoğunluk için finansal okuryazarlık büyük bir eksik. Değişen ekonomik şartlar, öğrenci hayat koşulları, sınırlı imkanlar ve daha bir çok etken insanları parayı daha idareli kullanmak zorunda bırakıyor. 
+Günümüzde özellikle gençlerden oluşan bir çoğunluk için finansal okuryazarlık büyük bir eksik. Değişen ekonomik şartlar, öğrenci hayat koşulları, sınırlı imkanlar ve daha bir çok etken insanları parayı daha idareli kullanmak zorunda bırakıyor. Biz de buna katkı sağlamak amacı ile "Lyda App"'i yarattık. Özellikle 18-30 yaş arası gençlere hitap eden uygulamamız, oyunlaştırma, sosyal finans, ve veri görselleştirme teknikleri kullanarak kişisel finans yönetimi için akıcı bir çözüm sunmayı amaçlıyor.
+
+Özellikler:
+-Veri Görselleştirme: OpenBanking API'lardan çektiğimiz harcama, hesap bakiyesi ve benzeri verileri anlaması kolay grafikler haline getirerek sunan bir panel.
+
+-Sosyal Finans: Uygulama üzerinden arkadaşlarınızı takip edebilir ve harcama verilerini karşılaştırarak tasarruf ve harcama önerileri alabilirsiniz.
+
+-Oyunlaştırma: Kişiyi finansal anlamda daha bilinçli davranmaya iten "başarılar" ve "rozetler" ile oyunlaştırma unsurları ile daha keyifli ve akıcı bir deneyim.
+
+-Üyelik Uyarı: OpenBanking API'lardan çektiğimiz harcama geçmişlerinden "subscription" üyelik formatında olanları belirleyerek, kullanıcıya gösteren, uyarıda bulunan ve üyeliğin yenileneceği tarihten önce tekrar para çekilmeden kullanıcıya uyarılar.
