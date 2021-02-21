@@ -45,17 +45,15 @@ export default class LoginScreen extends Component {
         <Layout style={LoginStyles.container}>
           <View style={LoginStyles.logoContainer}>
             <View style={LoginStyles.logoOutline}>
-              {/*
               <Image
-                source={require('../../src/img/logoPNGColoured.png')}
+                source={require('../../src/img/lyda_icon_transparent.png')}
                 style={LoginStyles.logo}
                 resizeMode={'contain'}
-              />*/}
+              />
             </View>
           </View>
           <View style={LoginStyles.inputContainer}>
-
-            <Text category="h2" style={{marginBottom: 30, marginTop: 30,}}>
+            <Text category="h2" style={{marginBottom: 30, marginTop: 30}}>
               Hoş Geldin!
             </Text>
             <Input
@@ -131,6 +129,7 @@ const LoginStyles = StyleSheet.create({
     justifyContent: 'center',
   },
   logo: {
+    marginTop: 50,
     width: 200,
   },
   inputContainer: {
