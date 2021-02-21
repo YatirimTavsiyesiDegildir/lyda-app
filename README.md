@@ -10,4 +10,4 @@ Oyunlaştırılmış bir deneyim sunarak kullanıcıyı motive eder, badge kazan
 
 LYDA App
 
-Günümüzde özellikle gençlerden oluşan bir çoğunluk için finansal okuryazarlık büyük bir eksik. Değişen ekonomik şartlar, öğrenci hayat koşulları, sınırlı imkanlar ve daha bir çok etken
+Günümüzde özellikle gençlerden oluşan bir çoğunluk için finansal okuryazarlık büyük bir eksik. Değişen ekonomik şartlar, öğrenci hayat koşulları, sınırlı imkanlar ve daha bir çok etken insanları parayı daha idareli kullanmak zorunda bırakıyor. 
