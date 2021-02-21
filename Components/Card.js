@@ -103,7 +103,64 @@ export const FriendWarningCard = props => {
   );
 };
 
+export const PurchaseCard = props => {
+  const [visible, setVisible] = React.useState(false);
+  const renderPurchaseInfo = () => (
+    <Card
+      style={[
+        CardStyles.smallCard,
+        {backgroundColor: props.subscription ? '#FFF1C2' : '#FFF', height: 60},
+      ]}
+      onPress={() => {
+        if (props.subscription === 1) {
+          setVisible(true);
+        }
+      }}>
+      <View style={[CardStyles.smallCardInnerContainer]}>
+        <Text category={'h6'} style={{flex: 1}}>
+          {props.name}
+        </Text>
+        <Text>{props.amount}TL</Text>
+      </View>
+    </Card>
+  );
+
+  return (
+    <Popover
+      visible={visible}
+      anchor={renderPurchaseInfo}
+      onBackdropPress={() => setVisible(false)}
+      backdropStyle={CardStyles.backdrop}>
+      <Layout style={CardStyles.content}>
+        <Text>
+          Bu harcamanin abonelik olma ihtimali var. Uyari eklemek ister misiniz?
+        </Text>
+        <View style={{flexDirection: 'row', width: '100%'}}>
+          <Button
+            style={CardStyles.subscriptionButton}
+            appearance="outline"
+            status="danger"
+            onPress={() => setVisible(false)}>
+            Hayir
+          </Button>
+          <Button
+            style={CardStyles.subscriptionButton}
+            appearance="filled"
+            status="success"
+            onPress={() => setVisible(false)}>
+            Evet
+          </Button>
+        </View>
+      </Layout>
+    </Popover>
+  );
+};
+
 const CardStyles = StyleSheet.create({
+  subscriptionButton: {
+    width: 150,
+    margin: 20,
+  },
   card: {
     flex: 1,
     margin: 10,
@@ -120,6 +177,7 @@ const CardStyles = StyleSheet.create({
   smallCardInnerContainer: {
     height: '100%',
     flexDirection: 'row',
+    alignItems: 'center',
   },
   icon: {
     width: 40,
@@ -143,10 +201,9 @@ const CardStyles = StyleSheet.create({
   footerControl: {},
   amountText: {alignSelf: 'flex-end', flex: 1},
   content: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
-    paddingHorizontal: 4,
-    paddingVertical: 8,
+    padding: 10,
   },
   backdrop: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
