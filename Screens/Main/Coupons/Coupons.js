@@ -6,6 +6,7 @@ import {
   ScrollView,
   View,
   TouchableOpacity,
+  RefreshControl,
 } from 'react-native';
 import {
   Divider,
@@ -35,7 +36,7 @@ import {
 export default class CouponsScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {visible: false, visible2: false};
+    this.state = {visible: false, visible2: false, refreshing: false};
   }
 
   componentDidMount() {}
@@ -77,7 +78,14 @@ export default class CouponsScreen extends Component {
         <Layout
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           {global.cardNumber != null || this.state.visible ? (
-            <ScrollView style={CouponsStyles.listContainer}>
+            <ScrollView
+              style={CouponsStyles.listContainer}
+              refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={() => this.setState({refreshing: false})}
+                />
+              }>
               {global.subscriptionWarningEnabled || this.state.visible2 ? (
                 <SubscriptionWarningCard />
               ) : (
