@@ -1,26 +1,22 @@
 import React from 'react';
-import {StyleSheet, View, Image} from 'react-native';
-import {Button, Card, Text, Icon, Popover, Layout} from '@ui-kitten/components';
+import {StyleSheet, View, Image, TouchableOpacity} from 'react-native';
+import {
+  Button,
+  Card,
+  Text,
+  Icon,
+  Popover,
+  Layout,
+  Modal,
+  Input,
+} from '@ui-kitten/components';
 
 const CouponCardFooter = props => {
-  let status = props.cardProps.status;
   return (
     <View style={[CardStyles.footerContainer]}>
       <Text category={'h3'}>{props.cardProps.name}</Text>
       <Text category={'h5'} style={CardStyles.amountText} appearance="hint" />
-      <Button
-        style={CardStyles.footerControl}
-        size="small"
-        appearance={status === 0 ? 'outline' : 'filled'}
-        status={status === 0 ? 'danger' : 'success'}
-        disabled={status === 3}
-        onPress={() => {
-          if (status === 1) {
-            props.openQRScreen();
-          }
-        }}>
-        {status === 0 ? 'EKLE' : 'EKLENDI'}
-      </Button>
+      {AddBankApiButton(props)}
     </View>
   );
 };
@@ -32,6 +28,65 @@ export const BankApiCard = props => (
     </View>
   </Card>
 );
+
+export const AddBankApiButton = props => {
+  let status = props.cardProps.status;
+  const [visible, setVisible] = React.useState(false);
+  const [cardNo, setCardNo] = React.useState(null);
+  return (
+    <>
+      <Button
+        style={CardStyles.footerControl}
+        size="small"
+        appearance={status === 0 || status === 2 ? 'outline' : 'filled'}
+        status={status === 0 ? 'danger' : status === 1 ? 'success' : 'grey'}
+        disabled={status === 2}
+        onPress={() => {
+          if (status === 0) {
+            setVisible(true);
+          }
+        }}>
+        {status === 0 ? 'EKLE' : status === 1 ? 'EKLENDI' : 'MEVCUT DEGIL'}
+      </Button>
+      {visible ? (
+        <View style={styles.container}>
+          <Modal
+            visible={visible}
+            backdropStyle={styles.backdrop}
+            onBackdropPress={() => setVisible(false)}
+            style={{width: '90%'}}>
+            <Card disabled={true} style={{margin: 10}}>
+              <Input
+                placeholder="Kart Numaraniz: "
+                value={cardNo}
+                onChangeText={nextValue => setCardNo(nextValue)}
+              />
+              <Button
+                style={CardStyles.footerControl}
+                size="small"
+                appearance={'filled'}
+                status={'success'}
+                disabled={status === 3}
+                onPress={() => {
+                  global.cardNumber = cardNo;
+                  setVisible(false);
+                }}>
+                EKLE
+              </Button>
+            </Card>
+          </Modal>
+        </View>
+      ) : null}
+    </>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {},
+  backdrop: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+});
 
 export const SubscriptionWarningCard = () => {
   const [visible, setVisible] = React.useState(false);

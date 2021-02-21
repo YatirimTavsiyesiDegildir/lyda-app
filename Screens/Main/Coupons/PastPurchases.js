@@ -4,7 +4,7 @@ import {
   StyleSheet,
   ScrollView,
   RefreshControl,
-  View,
+  View, Alert,
 } from 'react-native';
 import {
   Divider,
@@ -30,27 +30,33 @@ export default class PastPurchasesScreen extends Component {
   }
 
   getTransactions() {
-    let updateTransactions = t => this.updateTransactions(t);
-    var xhr = new XMLHttpRequest();
-    var url =
-      'https://api.yapikredi.com.tr/api/creditcard/v1/creditCardTransactions';
-    xhr.open('POST', url);
-    xhr.setRequestHeader(
-      'Authorization',
-      'Bearer 5bdb7b35-5a01-468d-9d3b-026cf361892e',
-    );
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.onreadystatechange = function() {
-      if (this.readyState == 4) {
-        updateTransactions(
-          JSON.parse(this.responseText).response.return.listResult.cycleList
-            .transactionList,
-        );
-      }
-    };
-    xhr.send(
-      ' {  "request": {    "cardNo": "6353183025166336",    "cycle": "0"  }}   ',
-    );
+    if (global.cardNumber != null) {
+      let updateTransactions = t => this.updateTransactions(t);
+      var xhr = new XMLHttpRequest();
+      var url =
+        'https://api.yapikredi.com.tr/api/creditcard/v1/creditCardTransactions';
+      xhr.open('POST', url);
+      xhr.setRequestHeader(
+        'Authorization',
+        'Bearer 5bdb7b35-5a01-468d-9d3b-026cf361892e',
+      );
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          updateTransactions(
+            JSON.parse(this.responseText).response.return.listResult.cycleList
+              .transactionList,
+          );
+        }
+      };
+      xhr.send(
+        ' {  "request": {    "cardNo": "' +
+          global.cardNumber +
+          '",    "cycle": "0"  }}   ',
+      );
+    } else {
+      Alert.alert('Lutfen bir banka ekleyiniz.');
+    }
   }
 
   componentDidMount() {
