@@ -15,7 +15,9 @@ import {
   Icon,
 } from '@ui-kitten/components';
 import {FetchGet, FetchPost} from '../../../src/utils/Fetch';
-//import {FriendCard} from '../../../src/components/Card';
+import {FriendCard} from '../../../src/component/Card';
+import {client} from '../../../back-end/OurApi';
+import {gql} from '@apollo/client';
 
 const AddFriendIcon = props => <Icon {...props} name="person-add-outline" />;
 
@@ -33,66 +35,41 @@ export default class FriendsScreen extends Component {
     this.getList();
   }
 
-  getFriendRequest() {
-    FetchGet(
-      '/get_friend_requests',
-      {access_token: global.accessToken},
-      response => {
-        this.setState({refreshing: false});
-        if (response.status === 'OK') {
-          this.setState(
-            {
-              friendRequests: response.friend_requests,
-              renderData: response.friend_requests.concat(this.state.friends),
-            },
-            () => console.log(this.state.renderData),
-          );
-        } else {
-          Alert.alert('Bir hata olustu.');
-        }
-      },
-      () => {
-        this.setState({refreshing: false});
-        Alert.alert('Bir hata olustu.');
-      },
-    );
-  }
-
   getFriends() {
-    FetchGet(
-      '/get_friends',
-      {access_token: global.accessToken},
-      response => {
-        this.setState({refreshing: false});
-        if (response.status === 'OK') {
-          this.setState(
-            {
-              friends: response.friends,
-              renderData: this.state.friendRequests.concat(response.friends),
-            },
-            () => console.log(this.state.renderData),
-          );
-        } else {
-          Alert.alert('Bir hata olustu.');
-        }
-      },
-      () => {
-        this.setState({refreshing: false});
+    client
+      .query({
+        query: gql`
+          query MyQuery($id: Int) {
+            followers(where: {follower_id: {_eq: $id}}) {
+              followed_to_user {
+                name
+                id
+              }
+            }
+          }
+        `,
+        variables: {
+          id: global.userId,
+        },
+      })
+      .then(result => {
+        let followed = result.data.followers;
+        this.setState({
+          friends: followed,
+        });
+      })
+      .catch(result => {
         Alert.alert('Bir hata olustu.');
-      },
-    );
+      });
   }
 
   getList() {
     this.setState({refreshing: true});
-    this.getFriendRequest();
     this.getFriends();
   }
 
   renderFriendCard = ({item, index}) => {
-    return <View />;
-  };
-  /*
+    return (
       <FriendCard
         cardProps={item}
         functions={{
@@ -101,24 +78,8 @@ export default class FriendsScreen extends Component {
         }}
         refreshing={this.state.refreshing}
       />
-    );*/
-
-  respondToFriendRequest(target, response) {
-    FetchPost(
-      '/respond_to_friend_request',
-      {
-        access_token: global.accessToken,
-        target_user_id: target,
-        response: response,
-      },
-      () => {
-        this.getList();
-      },
-      () => {
-        Alert.alert('Bir hata olustu!');
-      },
     );
-  }
+  };
 
   navigateAddFriends = () => (
     <TopNavigationAction
@@ -131,7 +92,7 @@ export default class FriendsScreen extends Component {
     return (
       <SafeAreaView style={{flex: 1}}>
         <TopNavigation
-          title="MyApp"
+          title="Arkadaslarim"
           alignment="center"
           accessoryRight={this.navigateAddFriends}
         />
@@ -140,8 +101,8 @@ export default class FriendsScreen extends Component {
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <List
             style={FriendsStyles.listContainer}
-            data={this.state.renderData}
-            extraData={this.state.renderData}
+            data={this.state.friends}
+            extraData={this.state.friends}
             renderItem={this.renderFriendCard}
             refreshControl={
               <RefreshControl

@@ -16,7 +16,7 @@ import {
   Input,
 } from '@ui-kitten/components';
 import {FetchGet, FetchPost} from '../../../src/utils/Fetch';
-//import {FriendCard} from '../../../src/components/Card';
+import {FriendCard} from '../../../src/component/Card';
 
 export default class AddFriendsScreen extends Component {
   constructor(props) {
@@ -61,15 +61,16 @@ export default class AddFriendsScreen extends Component {
   }
 
   renderFriendCard = ({item, index}) => {
-    return <View />;
-    /*<FriendCard
+    return (
+      <FriendCard
         cardProps={item}
         functions={{
           respondToFriendRequest: (target, response) =>
             this.respondToFriendRequest(target, response),
         }}
         refreshing={this.state.refreshing}
-      />*/
+      />
+    );
   };
 
   respondToFriendRequest(target, response) {
