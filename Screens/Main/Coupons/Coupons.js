@@ -28,6 +28,7 @@ import {
   ContributionGraph,
   StackedBarChart,
 } from 'react-native-chart-kit';
+import {SubscriptionWarningCard} from '../../../Components/Card';
 
 export default class CouponsScreen extends Component {
   constructor(props) {
@@ -72,7 +73,7 @@ export default class CouponsScreen extends Component {
         <Layout
           style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
           <ScrollView style={CouponsStyles.listContainer}>
-            <View style={{height: 40}} />
+            <SubscriptionWarningCard />
             <Text category="h4" style={CouponsStyles.sectionTitle}>
               Aylik Varlik Degisimi
             </Text>
@@ -234,7 +235,7 @@ export default class CouponsScreen extends Component {
                 },
               }}
             />
-            <View style={{height:75}}/>
+            <View style={{height: 75}} />
           </ScrollView>
         </Layout>
       </SafeAreaView>

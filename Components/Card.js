@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Image} from 'react-native';
-import {Button, Card, Layout, Text} from '@ui-kitten/components';
+import {Button, Card, Text, Icon, Popover, Layout} from '@ui-kitten/components';
 
 const CouponCardFooter = props => {
   let status = props.cardProps.status;
@@ -25,21 +25,7 @@ const CouponCardFooter = props => {
   );
 };
 
-/*
-{
-	:done: "amount": 15,
-	"code": "COWSXZ",
-	"formal_name": "Barikat A.S.",
-	"gifted_by": null,
-	"iban": "TR78 0011 1000 0000 0079 4274 57",
-	"id": 199,
-	:done: "image_url": "https://bulusunca.s3.us-east-2.amazonaws.com/place-pictures/Barikat1.jpg",
-	"is_gifted": 0,
-	:done: "place_name": "Barikat",
-	"status": 1
-}
- */
-const BankApiCard = props => (
+export const BankApiCard = props => (
   <Card style={CardStyles.card} footer={() => CouponCardFooter(props)}>
     <View style={CardStyles.cardInnerContainer}>
       <Image style={CardStyles.image} source={{uri: props.cardProps.image}} />
@@ -47,11 +33,71 @@ const BankApiCard = props => (
   </Card>
 );
 
+export const SubscriptionWarningCard = () => {
+  const [visible, setVisible] = React.useState(false);
+
+  const renderToggleButton = () => (
+    <Card style={CardStyles.smallCard} onPress={() => setVisible(true)}>
+      <View style={CardStyles.smallCardInnerContainer}>
+        <View
+          style={{
+            height: '100%',
+            width: 60,
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+          <Icon
+            style={CardStyles.icon}
+            fill="#FFF"
+            name="alert-circle-outline"
+          />
+        </View>
+        <Text category={'h6'} style={{flex: 1, color: '#FFF'}}>
+          3 gun sonra Spotify odemen gerceklesek, abonelige devam etmek istiyor
+          musun?
+        </Text>
+      </View>
+    </Card>
+  );
+
+  return (
+    <Popover
+      visible={visible}
+      anchor={renderToggleButton}
+      onBackdropPress={() => setVisible(false)}
+      backdropStyle={CardStyles.backdrop}>
+      <Layout style={CardStyles.content}>
+        <Text>
+          Henuz bankanizin API'i buna izin vermiyor, lutfen diger yollarla
+          aboneliginizi iptal edin.
+        </Text>
+      </Layout>
+    </Popover>
+  );
+};
+
 const CardStyles = StyleSheet.create({
   card: {
     flex: 1,
     margin: 10,
     borderRadius: 20,
+  },
+  smallCard: {
+    width: '100%',
+    height: 100,
+    backgroundColor: '#FF3D71',
+    borderRadius: 20,
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  smallCardInnerContainer: {
+    height: '100%',
+    flexDirection: 'row',
+  },
+  icon: {
+    width: 40,
+    height: 40,
+    color: '#FFF',
   },
   cardInnerContainer: {
     height: 100,
@@ -69,6 +115,13 @@ const CardStyles = StyleSheet.create({
   },
   footerControl: {},
   amountText: {alignSelf: 'flex-end', flex: 1},
+  content: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 4,
+    paddingVertical: 8,
+  },
+  backdrop: {
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
 });
-
-export default BankApiCard;

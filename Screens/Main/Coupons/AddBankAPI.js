@@ -10,7 +10,7 @@ import {
   Icon,
   TopNavigationAction,
 } from '@ui-kitten/components';
-import BankApiCard from '../../../Components/Card';
+import {BankApiCard} from '../../../Components/Card';
 import {FetchGet} from '../../../Utils/Fetch';
 
 export default class AddBankAPI extends Component {
