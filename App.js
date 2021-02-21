@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Alert} from 'react-native';
+import {Alert, YellowBox} from 'react-native';
 import * as eva from '@eva-design/eva';
 import {ApplicationProvider, IconRegistry} from '@ui-kitten/components';
 import {EvaIconsPack} from '@ui-kitten/eva-icons';
@@ -12,6 +12,8 @@ import theme from './src/themes/theme';
 import {client} from './back-end/OurApi';
 import {gql} from '@apollo/client';
 
+YellowBox.ignoreWarnings(['Warning: ReactNative.createElement']);
+
 /**GLOBALS START*/
 global.email = '';
 global.userId = 0;
@@ -19,6 +21,8 @@ global.tckn = '';
 global.realName = '';
 global.password = '';
 global.username = '';
+global.friendsAdded = false;
+global.subscriptionWarningEnabled = false;
 /**GLOBALS END*/
 
 export default class App extends Component {

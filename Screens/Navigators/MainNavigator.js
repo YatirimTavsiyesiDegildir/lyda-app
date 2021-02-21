@@ -22,7 +22,7 @@ const Stack = createStackNavigator();
 // Bottom tab icons
 const PersonIcon = props => <Icon {...props} name="person" />;
 const PeopleIcon = props => <Icon {...props} name="people-outline" />;
-const CouponIcon = props => <Icon {...props} name="pricetags" />;
+const CouponIcon = props => <Icon {...props} name="activity-outline" />;
 
 const CouponsStack = props => (
   <Stack.Navigator headerMode="none">

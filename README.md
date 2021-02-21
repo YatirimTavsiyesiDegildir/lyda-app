@@ -8,3 +8,6 @@ Ayrıca uygulamamız sayesinde arkadaşlarınızı takip edebilir, ortalama harc
 Oyunlaştırılmış bir deneyim sunarak kullanıcıyı motive eder, badge kazanabilir.
 
 
+LYDA App
+
+Günümüzde özellikle gençlerden oluşan bir çoğunluk için finansal okuryazarlık büyük bir eksik. Değişen ekonomik şartlar, öğrenci hayat koşulları, sınırlı imkanlar ve daha bir çok etken
