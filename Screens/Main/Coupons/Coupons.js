@@ -77,11 +77,11 @@ export default class CouponsScreen extends Component {
           <ScrollView style={CouponsStyles.listContainer}>
             <SubscriptionWarningCard />
             <Text category="h4" style={CouponsStyles.sectionTitle}>
-              Aylik Birikim Degisimi
+              Aylık Birikim Değişimi
             </Text>
             <LineChart
               data={{
-                labels: ['Eylul', 'Ekim', 'Kasim', 'Aralik', 'Ocak'],
+                labels: ['Eylül', 'Ekim', 'Kasım', 'Aralık', 'Ocak'],
                 datasets: [
                   {
                     data: [100, 500, 500, 4750, 4500],
@@ -118,7 +118,7 @@ export default class CouponsScreen extends Component {
 
             <View style={{height: 40}} />
             <Text category="h4" style={CouponsStyles.sectionTitle}>
-              Bu Ayin Harcamalari
+              Bu Ayın Harcamaları
             </Text>
             <FriendWarningCard />
 
@@ -132,14 +132,14 @@ export default class CouponsScreen extends Component {
                   legendFontSize: 15,
                 },
                 {
-                  name: 'Eglence',
+                  name: 'Eğlence',
                   amount: 1000,
                   color: '#ffb74d',
                   legendFontColor: '#ffb74d',
                   legendFontSize: 15,
                 },
                 {
-                  name: 'Ulasim',
+                  name: 'Ulaşım',
                   amount: 300,
                   color: '#ff9800',
                   legendFontColor: '#ff9800',
@@ -175,7 +175,7 @@ export default class CouponsScreen extends Component {
               <Text
                 category="h4"
                 style={[CouponsStyles.sectionTitle, {flex: 1}]}>
-                Harcama Aliskanliklari
+                Harcama Alışkanlıkları
               </Text>
               <TouchableOpacity
                 onPress={() =>

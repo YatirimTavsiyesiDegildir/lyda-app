@@ -89,7 +89,7 @@ export default class ProfileScreen extends Component {
             </Text>
           </View>
           <View style={ProfileStyles.logoutContainer}>
-            <Text category={'h3'}>Basarilarim</Text>
+            <Text category={'h3'}>Başarılarım</Text>
             <View
               style={{
                 height: '100%',
@@ -99,15 +99,15 @@ export default class ProfileScreen extends Component {
                 marginTop: 20,
               }}>
               {this.ModalWithBackdropShowcase(
-                'Tebrikler! Tum aboneliklerin icin hatirlatici kurdun.',
+                'Tebrikler! Tüm aboneliklerin için hatırlatıcı kurdun.',
                 'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/clap.jpeg',
               )}
               {this.ModalWithBackdropShowcase(
-                'Tebrikler! Bir hafta boyunca arkadaslarindan daha tasarruflu davrandin.',
+                'Tebrikler! Bir hafta boyunca arkadaşlarından daha tasarruflu davrandın.',
                 'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/flag.jpg',
               )}
               {this.ModalWithBackdropShowcase(
-                'Tebrikler! Lyda hesabini bir banka hesabina bagladin.',
+                'Tebrikler! Lyda hesabını bir banka hesabına bağladın.',
                 'https://project-lyda.s3.eu-central-1.amazonaws.com/badges/natural.jpeg',
               )}
             </View>

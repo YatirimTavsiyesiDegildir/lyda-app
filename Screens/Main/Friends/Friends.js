@@ -59,7 +59,7 @@ export default class FriendsScreen extends Component {
         });
       })
       .catch(result => {
-        Alert.alert('Bir hata olustu.');
+        Alert.alert('Bir hata oluştu.');
       });
   }
 
@@ -92,7 +92,7 @@ export default class FriendsScreen extends Component {
     return (
       <SafeAreaView style={{flex: 1}}>
         <TopNavigation
-          title="Arkadaslarim"
+          title="Arkadaşlarım"
           alignment="center"
           accessoryRight={this.navigateAddFriends}
         />

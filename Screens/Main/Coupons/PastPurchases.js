@@ -55,7 +55,7 @@ export default class PastPurchasesScreen extends Component {
           '",    "cycle": "0"  }}   ',
       );
     } else {
-      Alert.alert('Lutfen bir banka ekleyiniz.');
+      Alert.alert('Lütfen bir banka ekleyiniz.');
     }
   }
 
@@ -78,7 +78,7 @@ export default class PastPurchasesScreen extends Component {
     return (
       <SafeAreaView style={{flex: 1}}>
         <TopNavigation
-          title="Harcamalarim"
+          title="Harcamalarım"
           alignment="center"
           accessoryLeft={this.renderLeftActions}
         />

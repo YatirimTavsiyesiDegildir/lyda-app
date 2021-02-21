@@ -108,7 +108,7 @@ export const SubscriptionWarningCard = () => {
           />
         </View>
         <Text category={'h6'} style={{flex: 1, color: '#FFF'}}>
-          3 gun sonra Spotify odemen gerceklesek, abonelige devam etmek istiyor
+          3 gün sonra Spotify ödemen gerçekleşecek, aboneliğe devam etmek istiyor
           musun?
         </Text>
       </View>
@@ -123,8 +123,8 @@ export const SubscriptionWarningCard = () => {
       backdropStyle={CardStyles.backdrop}>
       <Layout style={CardStyles.content}>
         <Text>
-          Henuz bankanizin API'i buna izin vermiyor, lutfen diger yollarla
-          aboneliginizi iptal edin.
+          Henüz bankanızın API'i buna izin vermiyor, lütfen diğer yollarla
+          aboneliğinizi iptal edin.
         </Text>
       </Layout>
     </Popover>
@@ -150,8 +150,8 @@ export const FriendWarningCard = props => {
           />
         </View>
         <Text style={{flex: 1, color: '#FFF'}}>
-          Ev disindaki harcamalarin arkdaslarindan %35 daha fazla. Bu
-          harcamalardan kisarak birikimlerine odaklanabilirsin.
+          Ev dışındaki harcamaların arkdaşlarindan %35 daha fazla. Bu
+          harcamalardan kısarak birikimlerine odaklanabilirsin.
         </Text>
       </View>
     </Card>
@@ -188,7 +188,7 @@ export const PurchaseCard = props => {
       backdropStyle={CardStyles.backdrop}>
       <Layout style={CardStyles.content}>
         <Text>
-          Bu harcamanin abonelik olma ihtimali var. Uyari eklemek ister misiniz?
+          Bu harcamanın abonelik olma ihtimali var. Uyarı eklemek ister misiniz?
         </Text>
         <View style={{flexDirection: 'row', width: '100%'}}>
           <Button
@@ -196,7 +196,7 @@ export const PurchaseCard = props => {
             appearance="outline"
             status="danger"
             onPress={() => setVisible(false)}>
-            Hayir
+            Hayır
           </Button>
           <Button
             style={CardStyles.subscriptionButton}
