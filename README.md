@@ -11,12 +11,20 @@ Günümüzde özellikle gençlerden oluşan bir çoğunluk için finansal okurya
 
 -Üyelik Uyarı: OpenBanking API'lardan çektiğimiz harcama geçmişlerinden "subscription" üyelik formatında olanları belirleyerek, kullanıcıya gösteren, uyarıda bulunan ve üyeliğin yenileneceği tarihten önce tekrar para çekilmeden kullanıcıya uyarılar.
 
-## Projeyi Calistirmak Icin
-Bilgisayarinizda [Node.js](https://nodejs.org/en/download/) ve [React Native](https://reactnative.dev/docs/getting-started)'in yuklu oldugundan emin olun.
+## Projeyi Çalıştırmak İçin
+Bilgisayarinizda [Node.js](https://nodejs.org/en/download/) ve [React Native](https://reactnative.dev/docs/getting-started)'in yüklü olduğundan emin olun.
 - `git clone https://github.com/DoguD/lyda-app`
 - `cd lyda-app && npm install`
 #### Android
-- [Android Studio](https://developer.android.com/studio) araciligiyla bir emulator baslatin
+- [Android Studio](https://developer.android.com/studio) aracılığıyla bir emülator başlatın
 - `npx react-native run-android`
 ### iOS
 - `npx react-native run-ios`
+
+## Kullanılan Teknolojiler:
+- [React Native](https://reactnative.dev/)
+- [AWS Aurora](https://aws.amazon.com/tr/rds/aurora/)
+- [Hasura](https://hasura.io/)
+- [GraphQL](https://graphql.org/)
+- [Apollo Client](https://www.apollographql.com/docs/)
+- [Yapı Kredi OpenBanking API](https://apiportal.yapikredi.com.tr/)
