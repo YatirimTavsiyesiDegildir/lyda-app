@@ -64,24 +64,50 @@ export default class App extends Component {
   }
 
   async checkCredentials() {
-    let token = await GetData('access_token');
-    if (token !== null && token !== '') {
-      FetchPost(
-        '/login',
-        {access_token: token},
-        response => {
-          if (response.status === 'OK') {
-            this.saveLoginInfo(response);
+    let email = await GetData('email');
+    let password = await GetData('password');
+    if (
+      email !== null &&
+      email !== '' &&
+      password !== null &&
+      password !== ''
+    ) {
+      client
+        .query({
+          query: gql`
+            query MyQuery($email: String, $password: String) {
+              users(
+                where: {
+                  email: {_eq: $email}
+                  _and: {_or: {password: {_eq: $password}}}
+                }
+              ) {
+                email
+                id
+                tckn
+                username
+                name
+                password
+                phonenumber
+              }
+            }
+          `,
+          variables: {
+            email: email,
+            password: password,
+          },
+        })
+        .then(result => {
+          if (result.data.users.length === 1) {
+            let user = result.data.users[0];
+            this.saveLoginInfo(user);
           } else {
-            console.log('clear info');
             this.clearLoginInfo();
           }
-        },
-        () => {
-          console.log('clear info');
+        })
+        .catch(result => {
           this.clearLoginInfo();
-        },
-      );
+        });
     }
   }
 
@@ -112,7 +138,6 @@ export default class App extends Component {
         },
       })
       .then(result => {
-        console.warn(result);
         if (result.data.users.length === 1) {
           let user = result.data.users[0];
           this.saveLoginInfo(user);
