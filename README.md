@@ -15,7 +15,7 @@ For today's youth, lack of financial literarcy is an important problem. Changing
 #### Android
 - Start an emulator from [Android Studio](https://developer.android.com/studio)
 - `npx react-native run-android`
-### iOS
+#### iOS
 - `npx react-native run-ios`
 ## Technologies Used
 - [React Native](https://reactnative.dev/)
