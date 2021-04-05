@@ -1,16 +1,15 @@
 # LYDA App
-
-Günümüzde özellikle gençlerden oluşan bir çoğunluk için finansal okuryazarlık büyük bir eksik. Değişen ekonomik şartlar, öğrenci hayat koşulları, sınırlı imkanlar ve daha bir çok etken insanları parayı daha idareli kullanmak zorunda bırakıyor. Biz de buna katkı sağlamak amacı ile "Lyda App"'i yarattık. Özellikle 18-30 yaş arası gençlere hitap eden uygulamamız, oyunlaştırma, sosyal finans, ve veri görselleştirme teknikleri kullanarak kişisel finans yönetimi için akıcı bir çözüm sunmayı amaçlıyor.
+For today's youth, lack of financial literarcy is an important problem. Changing economy, student life, limited resources and other factors push people to use their money more wisely. In order to aid this problem we created **Lyda App**. It focuses on young people with age ranging from 18 to 30. Lyda (by utilizes gamification, social finance, and visualization of data) aims to provide an effective financial managment.
 
 ## Features
-- **Veri Görselleştirme**: OpenBanking API'lardan çektiğimiz harcama, hesap bakiyesi ve benzeri verileri anlaması kolay grafikler haline getirerek sunan bir panel.
+- **Data Visualization**: We visualize the data we get from OpenBanking API's to create understandable graphs.
 
-- **Sosyal Finans**: Uygulama üzerinden arkadaşlarınızı takip edebilir ve harcama verilerini karşılaştırarak tasarruf ve harcama önerileri alabilirsiniz.
+- **Social Finance**: You can connect with your friends over the application and compare spending data to get meaningful saving and spending advices.
 
-- **Oyunlaştırma**: Kişiyi finansal anlamda daha bilinçli davranmaya iten "başarılar" ve "rozetler" ile oyunlaştırma unsurları ile daha keyifli ve akıcı bir deneyim.
+- **Gamification**: With achivements and badges we are motivating people towards wise finacial decisions.
 
-- **Abonelik Yönetimi**: OpenBanking API'lardan çektiğimiz harcama geçmişlerinden "subscription" üyelik formatında olanları belirleyerek, kullanıcıya gösteren, uyarıda bulunan ve üyeliğin yenileneceği tarihten önce tekrar para çekilmeden kullanıcıya uyarılar.
-
+- **Subscription Managment**: By utilizing the data we get from OpenBanking API's we detect the subscription and warn people regarding them to prevent unwanted payments.
+- 
 ## How to Run
 - Install [Node.js](https://nodejs.org/en/download/) and [React Native](https://reactnative.dev/docs/getting-started) to your computer.
 - `git clone https://github.com/YatirimTavsiyesiDegildir/lyda-app`
